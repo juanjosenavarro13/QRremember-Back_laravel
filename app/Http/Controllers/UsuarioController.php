@@ -85,6 +85,7 @@ class UsuarioController extends Controller
                         'status'    => 'success',
                         'code'      => 200,
                         'message'   => 'El usuario '. $request->email .' ha iniciado sesion correctamente',
+                        'user'      => $user
                     ];
                 }else{//si se encuentra el usuario
                     $res = [
