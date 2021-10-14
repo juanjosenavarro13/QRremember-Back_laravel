@@ -17,9 +17,9 @@ class UsuarioController extends Controller
 
             //validacion de datos
             $valitador = Validator::make($request->all(),[
-                'email'                     => 'required|unique:usuarios|email|max:20',
+                'email'                     => 'required|unique:usuarios|email|max:50',
                 'password'                  => 'required',
-                'nombre'                    => 'required',
+                'nombre'                    => 'required|max:20',
             ]);
 
             if($valitador->fails()){//si hay algun error en la validacion
