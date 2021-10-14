@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\HistoryController;
+use App\Http\Controllers\FallecidoController;
 
 
 // rutas de usuario
@@ -12,4 +12,4 @@ Route::get('/api/usuarios', [UserController::class, 'lista']);
 
 
 //rutas historiales
-Route::get('/api/ultimos_fallecidos', [HistoryController::class, 'ultimos_fallecidos']);
+Route::get('/api/fallecidos', [FallecidoController::class, 'ultimos_fallecidos']);

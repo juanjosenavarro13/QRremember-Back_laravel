@@ -112,16 +112,8 @@ class UserController extends Controller
     }//final login
 
     public function lista(){
-        $res = [
-            'code'          => 200,
-            'message'       => 'lista de usuarios',
-            'usuarios'      => User::all()
-        ];
-
-       //respuesta
-        return response()->json($res, $res['code']);
-
-    }//final admin_lista_users
+        return response()->json(User::all(), 200);
+    }
 
 
 
