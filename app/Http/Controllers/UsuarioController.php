@@ -3,22 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\Usuario;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
-class UserController extends Controller
+class UsuarioController extends Controller
 {
-    
+
+
     public function register(Request $request){
 
         if(!is_null($request->all())){//tenemos los datos
 
             //validacion de datos
             $valitador = Validator::make($request->all(),[
-                'nombre'                    => 'required|alpha|max:10',
-                'email'                     => 'required|unique:users|email|max:20',
-                'password'                  => 'required|min:6|confirmed',
+                'email'                     => 'required|unique:usuarios|email|max:20',
+                'password'                  => 'required',
+                'nombre'                    => 'required',
             ]);
 
             if($valitador->fails()){//si hay algun error en la validacion
@@ -28,9 +29,9 @@ class UserController extends Controller
                     'message'   => 'Error al validar datos. ' . $valitador->errors()
                 ];
             }else{// si se han validado todos los datos correctamente
-                $user = new User();
-                $user->nombre = $request->nombre;
+                $user = new Usuario();
                 $user->email = $request->email;
+                $user->nombre = $request->nombre;
                 $user->password = hash('SHA256', $request->password);
                 $user->role = 'USER';
                 $user->active = 0;
@@ -76,7 +77,7 @@ class UserController extends Controller
                     'message'   => 'Error al validar datos. ' . $valitador->errors()
                 ];
             }else{// si se han validado todos los datos correctamente
-                $user = User::where('email', '=', $request->email)
+                $user = Usuario::where('email', '=', $request->email)
                 ->where('password', '=', hash('SHA256', $request->password))->first();
 
                 if(!is_null($user)){//si no se encuentra el usuario
@@ -112,7 +113,7 @@ class UserController extends Controller
     }//final login
 
     public function lista(){
-        return response()->json(User::all(), 200);
+        return response()->json(Usuario::all(), 200);
     }
 
 
