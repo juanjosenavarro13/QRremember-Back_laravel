@@ -8,9 +8,8 @@ use App\Http\Controllers\HistoryController;
 // rutas de usuario
 Route::post('/api/register', [UserController::class, 'register']);
 Route::post('/api/login', [UserController::class, 'login']);
+Route::get('/api/usuarios', [UserController::class, 'lista']);
 
-//rutas admin
-Route::post('/api/admin/lista_users', [UserController::class, 'admin_lista_users']);
 
 //rutas historiales
 Route::get('/api/ultimos_fallecidos', [HistoryController::class, 'ultimos_fallecidos']);

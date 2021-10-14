@@ -16,7 +16,7 @@ class UserController extends Controller
 
             //validacion de datos
             $valitador = Validator::make($request->all(),[
-                'username'                  => 'required|alpha|max:10',
+                'nombre'                    => 'required|alpha|max:10',
                 'email'                     => 'required|unique:users|email|max:20',
                 'password'                  => 'required|min:6|confirmed',
             ]);
@@ -29,7 +29,7 @@ class UserController extends Controller
                 ];
             }else{// si se han validado todos los datos correctamente
                 $user = new User();
-                $user->username = $request->username;
+                $user->nombre = $request->nombre;
                 $user->email = $request->email;
                 $user->password = hash('SHA256', $request->password);
                 $user->role = 'USER';
@@ -111,30 +111,14 @@ class UserController extends Controller
         return response()->json($res, $res['code']);
     }//final login
 
-    public function admin_lista_users(Request $request){
-        $admin = User::where('id', '=', $request->id_admin)
-        ->where('active','=','1')
-        ->where('role','=','ADMIN')->first();
+    public function lista(){
+        $res = [
+            'code'          => 200,
+            'message'       => 'lista de usuarios',
+            'usuarios'      => User::all()
+        ];
 
-        if(is_null($admin)){
-            $res = [
-                'status'        => 'error',
-                'code'          => 400,
-                'message'       => '[WARNING] usuario con id '. $request->id_admin . ' intenta acceder a /admin/ lista users'
-            ];
-        }else{
-            $lista_usuarios = User::all();
-
-            $res = [
-                'status'        => 'success',
-                'code'          => 200,
-                'message'       => 'El usuario con id '. $request->id_admin . ' accede a la lista de usuarios',
-                'users'         => $lista_usuarios
-            ];
-        }
-        //respuesta
-        $controller = new Controller();
-        $controller->log_save('ADMIN', $res['message'], $request->ip());
+       //respuesta
         return response()->json($res, $res['code']);
 
     }//final admin_lista_users
