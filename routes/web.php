@@ -6,8 +6,6 @@ use App\Http\Controllers\FallecidoController;
 
 
 // rutas de usuario
-Route::post('/api/usuarios', [UsuarioController::class, 'register']);
-Route::post('/api/login', [UsuarioController::class, 'login']);
 Route::get('/api/usuarios', [UsuarioController::class, 'lista']);
 
 
