@@ -106,7 +106,6 @@ class AuthController extends Controller
                 ['password' => bcrypt($request->password)]
             ));
             
-            var_dump($user); die();
             $res = [
                 'code'          => 200,
                 'message'       => 'usuario registrado',
