@@ -13,7 +13,6 @@ CREATE TABLE usuarios(
     email           varchar(100) not null,
     password        varchar(255) not null,
     role            varchar(5) default 'USER',
-    active          boolean default 0,
     remember_token  varchar(100),
 
     created_at      timestamp,
@@ -23,9 +22,9 @@ CREATE TABLE usuarios(
 
 )ENGINE=INNODB;
 
-insert into usuarios(nombre,email,password,role,active) values
-('admin','admin@admin.es','$2y$10$06w96ZPEekipMyFVahBvze8F1CB8UAc/2fLZWIMsz9eA1L86mLF9.','ADMIN',1),
-('user','user@user.es','$2y$10$06w96ZPEekipMyFVahBvze8F1CB8UAc/2fLZWIMsz9eA1L86mLF9.','USER',1);
+insert into usuarios(nombre,email,password,role) values
+('admin','admin@admin.es','$2y$10$06w96ZPEekipMyFVahBvze8F1CB8UAc/2fLZWIMsz9eA1L86mLF9.','ADMIN'),
+('user','user@user.es','$2y$10$06w96ZPEekipMyFVahBvze8F1CB8UAc/2fLZWIMsz9eA1L86mLF9.','USER');
 
 CREATE TABLE fallecidos(
 
@@ -52,16 +51,3 @@ insert into fallecidos(nombre,apellidos,fecha_nacimiento,fecha_fallecimiento,des
 ('antonio','jimenez pedrosa','1999-09-09','2021-09-09','texto de prueba',2);
 
 
-CREATE TABLE logs(
-
-    id          int(11) auto_increment,
-    action      varchar(50),
-    description text,
-    ip          varchar(25),
-
-    created_at      timestamp,
-    updated_at      timestamp,
-
-    constraint pk_docs primary key(id)
-
-)ENGINE=INNODB;
