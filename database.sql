@@ -8,8 +8,9 @@ USE QRremember;
 CREATE TABLE usuarios(
 
     id              int(11) auto_increment,
-    nombre          varchar(20) not null,
-    email           varchar(50) not null,
+    img_perfil      varchar(100) default '../../../assets/img/perfil_default.jpg',
+    nombre          varchar(50) not null,
+    email           varchar(100) not null,
     password        varchar(255) not null,
     role            varchar(5) default 'USER',
     active          boolean default 0,
@@ -22,18 +23,21 @@ CREATE TABLE usuarios(
 
 )ENGINE=INNODB;
 
-insert into usuarios(nombre,email,password,role,active) 
-values('admin','admin@admin.es','8C6976E5B5410415BDE908BD4DEE15DFB167A9C873FC4BB8A81F6F2AB448A918','ADMIN',1);
+insert into usuarios(nombre,email,password,role,active) values
+('admin','admin@admin.es','$2y$10$06w96ZPEekipMyFVahBvze8F1CB8UAc/2fLZWIMsz9eA1L86mLF9.','ADMIN',1),
+('user','user@user.es','$2y$10$06w96ZPEekipMyFVahBvze8F1CB8UAc/2fLZWIMsz9eA1L86mLF9.','USER',1);
 
 CREATE TABLE fallecidos(
 
     id                      int(11) auto_increment,
     nombre                  varchar(20) not null,
+    imagen                  varchar(200) default '../../../assets/img/fallecido_default.jpg',
     apellidos               varchar(50) not null,
     fecha_nacimiento        date not null,
     fecha_fallecimiento     date not null,
     descripcion             text not null,
     user_id                 int(11) not null,
+    clave                   varchar(100),
 
     created_at              timestamp,
     updated_at              timestamp,
@@ -43,8 +47,9 @@ CREATE TABLE fallecidos(
 
 )ENGINE=INNODB;
 
-insert into fallecidos(nombre,apellidos,fecha_nacimiento,fecha_fallecimiento,descripcion,user_id) 
-values('nombre','apellidouno apellidodos','1909-09-09','2021-09-09','texto de prueba',1);
+insert into fallecidos(nombre,apellidos,fecha_nacimiento,fecha_fallecimiento,descripcion,user_id) values
+('nombre','apellidouno apellidodos','1989-09-09','2021-09-09','texto de prueba',1),
+('antonio','jimenez pedrosa','1999-09-09','2021-09-09','texto de prueba',2);
 
 
 CREATE TABLE logs(

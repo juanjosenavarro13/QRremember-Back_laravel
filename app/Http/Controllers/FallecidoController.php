@@ -12,4 +12,11 @@ class FallecidoController extends Controller
 
         return response()->json($res, 200);
     }
+
+    public function fallecido_info($id){
+        $res = Fallecido::where('id', '=', $id)->first();
+
+        return response()->json($res, 200);
+    }
+
 }
