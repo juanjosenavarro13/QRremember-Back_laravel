@@ -42,7 +42,7 @@ CREATE TABLE fallecidos(
     updated_at              timestamp,
 
     constraint pk_histories primary key(id),
-    constraint fk_histories_users foreign key(user_id) references usuarios(id)
+    constraint fk_histories_users foreign key(user_id) references usuarios(id) ON DELETE CASCADE
 
 )ENGINE=INNODB;
 

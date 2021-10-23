@@ -14,6 +14,10 @@ class UsuarioController extends Controller
         return response()->json(Usuario::all(), 200);
     }
 
+    public function info($id){
+        return response()->json(Usuario::where('id', '=', $id)->first());
+    }
+
 
 
 }//final clase
