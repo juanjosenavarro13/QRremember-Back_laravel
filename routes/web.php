@@ -12,3 +12,5 @@ Route::get('/api/fallecido_info/{id}', [FallecidoController::class, 'fallecido_i
 //rutas usuarios
 Route::get('/api/usuarios/lista', [UsuarioController::class, 'lista']);
 Route::get('/api/usuarios/info/{id}', [UsuarioController::class, 'info']);
+Route::post('/api/usuarios/actualizar/{id}', [UsuarioController::class, 'update']);
+Route::post('/api/usuarios/eliminar/{id}', [UsuarioController::class, 'delete']);
