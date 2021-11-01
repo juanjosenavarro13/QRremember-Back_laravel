@@ -77,4 +77,12 @@ class FallecidoController extends Controller
         
     }
 
+    public function lista(){
+        $fallecidos = Fallecido::select('fallecidos.*', 'usuarios.nombre AS user_nombre',)
+        ->join('usuarios', 'usuarios.id', '=', 'fallecidos.user_id')->orderBy('id', 'DESC')
+        ->get();
+        
+        return response()->json($fallecidos, 200);
+    }
+
 }

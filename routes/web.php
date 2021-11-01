@@ -11,6 +11,7 @@ Route::get('/api/fallecidos', [FallecidoController::class, 'ultimos_fallecidos']
 Route::get('/api/fallecido_info/{id}', [FallecidoController::class, 'fallecido_info']);
 Route::post('/api/fallecido/crear', [FallecidoController::class, 'crear_fallecido']);
 Route::post('/api/fallecido/imagen_perfil/{id}', [FallecidoController::class, 'imagen_perfil']);
+Route::get('/api/fallecidos/lista', [FallecidoController::class, 'lista']);
 
 //rutas usuarios
 Route::get('/api/usuarios/lista', [UsuarioController::class, 'lista']);
