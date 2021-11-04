@@ -85,4 +85,10 @@ class FallecidoController extends Controller
         return response()->json($fallecidos, 200);
     }
 
+    public function delete($id){
+        $fallecido = Fallecido::where('id', '=', $id)->first();
+        $fallecido->delete();
+        return response()->json('Fallecido eliminado', 200);
+    }
+
 }
