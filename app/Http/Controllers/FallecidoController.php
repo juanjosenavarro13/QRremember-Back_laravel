@@ -15,7 +15,9 @@ class FallecidoController extends Controller
     }
 
     public function fallecido_info($id){
-        $res = Fallecido::where('id', '=', $id)->first();
+        $res = Fallecido::select('fallecidos.*', 'usuarios.nombre AS user_nombre',)
+        ->join('usuarios', 'usuarios.id', '=', 'fallecidos.user_id')->where('fallecidos.id','=', $id)
+        ->first();
 
         return response()->json($res, 200);
     }
@@ -89,6 +91,23 @@ class FallecidoController extends Controller
         $fallecido = Fallecido::where('id', '=', $id)->first();
         $fallecido->delete();
         return response()->json('Fallecido eliminado', 200);
+    }
+
+    public function actualizar(Request $request, $id){
+
+        $fallecido = Fallecido::where('id', '=', $id)->first();
+
+        $fallecido->nombre = $request->nombre;
+        $fallecido->apellidos = $request->apellidos;
+        $fallecido->fecha_nacimiento = $request->fecha_nacimiento;
+        $fallecido->fecha_fallecimiento = $request->fecha_fallecimiento;
+        $fallecido->descripcion = $request->descripcion;
+        $fallecido->user_id = $request->user_id;
+        $fallecido->clave = $request->clave;
+
+        $fallecido->save();
+        return response()->json($fallecido, 200);
+
     }
 
 }

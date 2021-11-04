@@ -13,6 +13,7 @@ Route::post('/api/fallecido/crear', [FallecidoController::class, 'crear_fallecid
 Route::post('/api/fallecido/imagen_perfil/{id}', [FallecidoController::class, 'imagen_perfil']);
 Route::get('/api/fallecidos/lista', [FallecidoController::class, 'lista']);
 Route::post('/api/fallecido/eliminar/{id}', [FallecidoController::class, 'delete']);
+Route::post('/api/fallecido/actualizar/{id}', [FallecidoController::class, 'actualizar']);
 
 //rutas usuarios
 Route::get('/api/usuarios/lista', [UsuarioController::class, 'lista']);

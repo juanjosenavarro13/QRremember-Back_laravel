@@ -50,4 +50,15 @@ insert into fallecidos(nombre,apellidos,fecha_nacimiento,fecha_fallecimiento,des
 ('nombre','apellidouno apellidodos','1989-09-09','2021-09-09','texto de prueba',1),
 ('antonio','jimenez pedrosa','1999-09-09','2021-09-09','texto de prueba',2);
 
+CREATE TABLE imagenes(
 
+    id                      int(11) auto_increment,
+    id_fallecido            int(11) not null,
+    url                     varchar(200) not null,
+
+    created_at              timestamp,
+    updated_at              timestamp,
+    
+    constraint pk_imagenes primary key(id)
+
+)ENGINE=INNODB;
