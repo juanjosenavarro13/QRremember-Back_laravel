@@ -35,7 +35,7 @@ CREATE TABLE fallecidos(
     fecha_nacimiento        date not null,
     fecha_fallecimiento     date not null,
     descripcion             text not null,
-    user_id                 int(11) not null,
+    user_id                 int(11) UNIQUE not null,
     clave                   varchar(100),
 
     created_at              timestamp,

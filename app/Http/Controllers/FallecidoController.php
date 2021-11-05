@@ -110,4 +110,8 @@ class FallecidoController extends Controller
 
     }
 
+    public function obtenerUsuarioMain($id){
+        return response()->json(Fallecido::where('user_id', '=', $id)->first());
+    }
+
 }
