@@ -18,7 +18,7 @@ class ImagenController extends Controller
             //indicamos que queremos guardar un nuevo archivo en el disco local
             \Storage::disk('imgFallecidos')->put($nombre,  \File::get($file));
             $imagen = new Imagen();
-            $imagen->url = 'storage/app/imgPerfil/'.$nombre;
+            $imagen->url = 'storage/app/imgFallecidos/'.$nombre;
             $imagen->id_fallecido = $id;
             $imagen->save();
             return response()->json("guardado correctamente",200);
