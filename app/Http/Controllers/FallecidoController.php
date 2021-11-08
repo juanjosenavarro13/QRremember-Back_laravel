@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Fallecido;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class FallecidoController extends Controller
@@ -85,6 +86,12 @@ class FallecidoController extends Controller
         ->get();
         
         return response()->json($fallecidos, 200);
+    }
+
+    public function buscarNombre($apellido){
+        $fallecido = Fallecido::where('apellidos','like',"%$apellido%")
+        ->get();
+        return response()->json($fallecido, 200);
     }
 
     public function delete($id){

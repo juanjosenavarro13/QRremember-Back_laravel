@@ -13,5 +13,5 @@ class Fallecido extends Model
 
     protected $fillable = [
         'nombre','apellidos','fecha_nacimiento','fecha_fallecimiento','descripcion','user_id','clave'
-    ];
+    ];    
 }
