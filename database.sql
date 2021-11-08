@@ -24,7 +24,8 @@ CREATE TABLE usuarios(
 
 insert into usuarios(nombre,email,password,role) values
 ('admin','admin@admin.es','$2y$10$06w96ZPEekipMyFVahBvze8F1CB8UAc/2fLZWIMsz9eA1L86mLF9.','ADMIN'),
-('user','user@user.es','$2y$10$06w96ZPEekipMyFVahBvze8F1CB8UAc/2fLZWIMsz9eA1L86mLF9.','USER');
+('user','user@user.es','$2y$10$06w96ZPEekipMyFVahBvze8F1CB8UAc/2fLZWIMsz9eA1L86mLF9.','USER'),
+('user2','user2@user2.es','$2y$10$06w96ZPEekipMyFVahBvze8F1CB8UAc/2fLZWIMsz9eA1L86mLF9.','USER');
 
 CREATE TABLE fallecidos(
 
@@ -47,8 +48,8 @@ CREATE TABLE fallecidos(
 )ENGINE=INNODB;
 
 insert into fallecidos(nombre,apellidos,fecha_nacimiento,fecha_fallecimiento,descripcion,user_id) values
-('nombre','apellidouno apellidodos','1989-09-09','2021-09-09','texto de prueba',1),
-('antonio','jimenez pedrosa','1999-09-09','2021-09-09','texto de prueba',2);
+('nombre','apellidouno apellidodos','1989-09-09','2021-09-09','texto de prueba',2),
+('antonio','jimenez pedrosa','1999-09-09','2021-09-09','texto de prueba',3);
 
 CREATE TABLE imagenes(
 
@@ -59,6 +60,7 @@ CREATE TABLE imagenes(
     created_at              timestamp,
     updated_at              timestamp,
     
-    constraint pk_imagenes primary key(id)
+    constraint pk_imagenes primary key(id),
+    constraint fk_imagenes_fallecidos foreign key(id_fallecido) REFERENCES fallecidos(id)
 
 )ENGINE=INNODB;

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\FallecidoController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ImagenController;
 
 
 //rutas fallecidos
@@ -21,6 +22,10 @@ Route::get('/api/usuarios/lista', [UsuarioController::class, 'lista']);
 Route::get('/api/usuarios/info/{id}', [UsuarioController::class, 'info']);
 Route::post('/api/usuarios/actualizar/{id}', [UsuarioController::class, 'update']);
 Route::post('/api/usuarios/eliminar/{id}', [UsuarioController::class, 'delete']);
+
+//rutas imagenes
+Route::post('/api/imagen/subir/{id}', [ImagenController::class, 'subir']);
+Route::get('/api/imagen/ver/{id}', [ImagenController::class, 'ver']);
 
 //pruebas
 Route::post('/api/pruebas', [Controller::class, 'pruebas']);
