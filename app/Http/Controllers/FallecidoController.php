@@ -75,9 +75,6 @@ class FallecidoController extends Controller
             return response()->json('error', 400);
         }
         
-       
-        
-        
     }
 
     public function lista(){
