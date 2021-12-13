@@ -22,6 +22,7 @@ CREATE TABLE usuarios(
 
 )ENGINE=INNODB;
 
+-- password 123123
 insert into usuarios(nombre,email,password,role) values
 ('admin','admin@admin.es','$2y$10$06w96ZPEekipMyFVahBvze8F1CB8UAc/2fLZWIMsz9eA1L86mLF9.','ADMIN'),
 ('user','user@user.es','$2y$10$06w96ZPEekipMyFVahBvze8F1CB8UAc/2fLZWIMsz9eA1L86mLF9.','USER'),
